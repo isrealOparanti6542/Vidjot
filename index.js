@@ -23,7 +23,8 @@ mongoose.Promise = global.Promise;
 const db = require('./config/database');
 
  mongoose.connect(db.mongoURI,{
-   useMongoClient: true
+    useNewUrlParser: true, // Use new URL parser
+    useUnifiedTopology: true,
  })
  .then(()=> console.log("mongodb connected"))
  .catch(err => console.log(err))
