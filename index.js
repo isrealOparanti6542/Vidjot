@@ -8,7 +8,6 @@ const passport = require('passport')
 const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
-
 //Load routes
 const ideas  = require("./routes/ideas")
 const users  = require("./routes/users")
@@ -20,12 +19,18 @@ require('./config/passport')(passport)
 mongoose.Promise = global.Promise;
 
 //DB config
-const db = require('./config/database');
+// const db = require('./config/database');
 
- mongoose.connect(db.mongoURI,{
-    useNewUrlParser: true, // Use new URL parser
-    useUnifiedTopology: true,
- })
+//  mongoose.connect(db.mongoURI,{
+//     useNewUrlParser: true, // Use new URL parser
+//     useUnifiedTopology: true,
+//  })
+
+ mongoose.connect(
+        "mongodb+srv://Isreal:oparanti@cluster0.pkhckh1.mongodb.net/VidjotProject?retryWrites=true&w=majority"
+        // 'mongodb://localhost:27017/vidjot-dev'   
+)
+ 
  .then(()=> console.log("mongodb connected"))
  .catch(err => console.log(err))
 //load idea model
